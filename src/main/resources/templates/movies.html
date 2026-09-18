@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Available Movies</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        .movie-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .movie-card {
+            background: white;
+            width: 280px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .movie-card h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .movie-card p {
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .book-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #e50914;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .book-button:hover {
+            background-color: #b20710;
+        }
+
+        .add-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #198754;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🎬 Available Movies</h1>
+
+<a href="/add-movie" class="add-button">
+    + Add New Movie
+</a>
+
+<div class="movie-container">
+
+    <div class="movie-card" th:each="movie : ${movies}">
+
+        <h2 th:text="${movie.title}">Movie Title</h2>
+
+        <p>
+            <strong>Language:</strong>
+            <span th:text="${movie.language}">Tamil</span>
+        </p>
+
+        <p>
+            <strong>Genre:</strong>
+            <span th:text="${movie.genre}">Action</span>
+        </p>
+
+        <p>
+            <strong>Duration:</strong>
+            <span th:text="${movie.duration}">150</span> minutes
+        </p>
+
+        <p class="price">
+            ₹<span th:text="${movie.price}">180</span>
+        </p>
+
+        <a th:href="@{/book/{id}(id=${movie.id})}"
+           class="book-button">
+            🎟️ Book Now
+        </a>
+
+    </div>
+
+</div>
+
+<div th:if="${movies.isEmpty()}">
+    <h2 style="text-align:center;">
+        No movies available.
+    </h2>
+</div>
+
+<a href="/" class="home-link">
+    ← Back to Home
+</a>
+
+</body>
+</html>
