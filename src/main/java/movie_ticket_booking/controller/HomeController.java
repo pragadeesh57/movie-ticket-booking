@@ -1,4 +1,4 @@
-package com.moviebooking.controller;
+package movie_ticket_booking.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

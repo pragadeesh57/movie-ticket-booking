@@ -1,19 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Ticket Booking</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
+
 <body>
 
-    <h1>🎬 Movie Ticket Booking System</h1>
+<nav class="navbar">
 
-    <h2>Welcome!</h2>
+    <h2>🎬 Movie Booking</h2>
 
-    <p>Book your favourite movie tickets easily.</p>
+    <div>
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/add-movie">Add Movie</a>
+        <a href="/booking-history">Bookings</a>
+    </div>
 
-    <button>View Movies</button>
+</nav>
+
+<div class="container">
+
+    <div class="hero">
+
+        <h1>🎬 Movie Ticket Booking System</h1>
+
+        <p>
+            Book your favourite movie and select your favourite seat!
+        </p>
+
+        <a href="/movies" class="btn">
+            Browse Movies
+        </a>
+
+    </div>
+
+</div>
+
+<div class="footer">
+
+    <p>© 2026 Movie Ticket Booking System</p>
+
+</div>
 
 </body>
+
 </html>
