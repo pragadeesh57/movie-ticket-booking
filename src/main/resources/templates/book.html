@@ -1,80 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
-    <meta charset="UTF-8">
-
-    <title>Book Ticket</title>
+    <title>Select Seat</title>
 
     <style>
-
         body {
             font-family: Arial, sans-serif;
             background: #f4f4f4;
+            text-align: center;
             padding: 30px;
         }
 
-        .booking-box {
+        .container {
             background: white;
-            max-width: 500px;
+            width: 600px;
             margin: auto;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 10px;
         }
 
-        h1 {
-            text-align: center;
-        }
-
-        .movie-name {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 95%;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 25px;
-            padding: 12px;
-            background: #e50914;
+        .screen {
+            background: #333;
             color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 18px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 80%;
+        }
+
+        .seats {
+            display: grid;
+            grid-template-columns: repeat(5, 60px);
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .seat {
+            padding: 12px;
+            background: #ddd;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        button:hover {
-            background: #b20710;
+        .seat:hover {
+            background: #aaa;
         }
 
-    </style>
+        input[type="radio"] {
+            display: none;
+        }
 
+        input[type="radio"]:checked + label {
+            background: green;
+            color: white;
+        }
+
+        .book-button {
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            margin: 10px;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="booking-box">
+<div class="container">
 
     <h1>🎟️ Book Movie Ticket</h1>
 
-    <p class="movie-name" th:text="${movie.title}">
-        Movie Name
-    </p>
+    <h2 th:text="${movie.title}"></h2>
 
     <p>
         Language:
@@ -82,14 +87,13 @@
     </p>
 
     <p>
-        Genre:
-        <span th:text="${movie.genre}"></span>
-    </p>
-
-    <p>
-        Ticket Price:
+        Price:
         ₹<span th:text="${movie.price}"></span>
     </p>
+
+    <div class="screen">
+        SCREEN
+    </div>
 
     <form action="/book" method="post">
 
@@ -97,31 +101,101 @@
                name="movieId"
                th:value="${movie.id}">
 
-        <label>Customer Name:</label>
+        <h3>Enter Your Name</h3>
 
         <input type="text"
                name="customerName"
                placeholder="Enter your name"
                required>
 
-        <label>Seat Number:</label>
+        <h3>Select Your Seat</h3>
 
-        <input type="text"
-               name="seatNumber"
-               placeholder="Example: A1"
-               required>
+        <div class="seats">
 
-        <button type="submit">
-            Confirm Booking
+            <div>
+                <input type="radio" id="A1" name="seatNumber" value="A1" required>
+                <label class="seat" for="A1">A1</label>
+            </div>
+
+            <div>
+                <input type="radio" id="A2" name="seatNumber" value="A2">
+                <label class="seat" for="A2">A2</label>
+            </div>
+
+            <div>
+                <input type="radio" id="A3" name="seatNumber" value="A3">
+                <label class="seat" for="A3">A3</label>
+            </div>
+
+            <div>
+                <input type="radio" id="A4" name="seatNumber" value="A4">
+                <label class="seat" for="A4">A4</label>
+            </div>
+
+            <div>
+                <input type="radio" id="A5" name="seatNumber" value="A5">
+                <label class="seat" for="A5">A5</label>
+            </div>
+
+            <div>
+                <input type="radio" id="B1" name="seatNumber" value="B1">
+                <label class="seat" for="B1">B1</label>
+            </div>
+
+            <div>
+                <input type="radio" id="B2" name="seatNumber" value="B2">
+                <label class="seat" for="B2">B2</label>
+            </div>
+
+            <div>
+                <input type="radio" id="B3" name="seatNumber" value="B3">
+                <label class="seat" for="B3">B3</label>
+            </div>
+
+            <div>
+                <input type="radio" id="B4" name="seatNumber" value="B4">
+                <label class="seat" for="B4">B4</label>
+            </div>
+
+            <div>
+                <input type="radio" id="B5" name="seatNumber" value="B5">
+                <label class="seat" for="B5">B5</label>
+            </div>
+
+            <div>
+                <input type="radio" id="C1" name="seatNumber" value="C1">
+                <label class="seat" for="C1">C1</label>
+            </div>
+
+            <div>
+                <input type="radio" id="C2" name="seatNumber" value="C2">
+                <label class="seat" for="C2">C2</label>
+            </div>
+
+            <div>
+                <input type="radio" id="C3" name="seatNumber" value="C3">
+                <label class="seat" for="C3">C3</label>
+            </div>
+
+            <div>
+                <input type="radio" id="C4" name="seatNumber" value="C4">
+                <label class="seat" for="C4">C4</label>
+            </div>
+
+            <div>
+                <input type="radio" id="C5" name="seatNumber" value="C5">
+                <label class="seat" for="C5">C5</label>
+            </div>
+
+        </div>
+
+        <br>
+
+        <button type="submit" class="book-button">
+            🎟️ Confirm Booking
         </button>
 
     </form>
-
-    <br>
-
-    <a href="/movies">
-        ← Back to Movies
-    </a>
 
 </div>
 

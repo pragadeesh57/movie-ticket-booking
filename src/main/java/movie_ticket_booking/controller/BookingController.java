@@ -63,4 +63,13 @@ public class BookingController {
     public String bookingSuccess() {
         return "booking-success";
     }
+
+    // Booking History
+    @GetMapping("/booking-history")
+    public String bookingHistory(Model model) {
+
+        model.addAttribute("bookings", bookingRepository.findAll());
+
+        return "booking-history";
+    }
 }
